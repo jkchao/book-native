@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.blognative;
 
 import android.app.Application;
 
