@@ -1,4 +1,4 @@
-package com.blognative;
+package com.booknative;
 
 import android.app.Application;
 
