@@ -22,13 +22,8 @@ const base = {
       fontFamily: 'Roboto',
     },
   })
-};
+}
 
 export default {
-  base: { ...base },
-  h1: { ...base, fontSize: base.fontSize * 1.75, lineHeight: lineHeight(base.fontSize * 2) },
-  h2: { ...base, fontSize: base.fontSize * 1.5, lineHeight: lineHeight(base.fontSize * 1.75) },
-  h3: { ...base, fontSize: base.fontSize * 1.25, lineHeight: lineHeight(base.fontSize * 1.5) },
-  h4: { ...base, fontSize: base.fontSize * 1.1, lineHeight: lineHeight(base.fontSize * 1.25) },
-  h5: { ...base },
-};
+  base: { ...base }
+}
