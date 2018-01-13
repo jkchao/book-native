@@ -20,7 +20,7 @@ const base = {
     },
     android: {
       fontFamily: 'Roboto',
-    },
+    }
   })
 }
 
