@@ -11,7 +11,6 @@
    return fetch(url, options)
           .then(res => res.json())
           .then(res => {
-            showToast(res.message)
             return res
           })
           .catch(error => {

@@ -93,26 +93,34 @@ export default class About extends Component {
     const userInfo = this.state.userInfo
     return (
       <View style={[ styles.container, styles.userContent ]}>
-        <Image style={ styles.userGravatar } source={
-            userInfo ? { uri: userInfo.gravatar } : ''
-          }/>
-        <Text style={ styles.userName }>{ userInfo ? userInfo.name : 'Surmon' }</Text>
-        <Text style={ styles.userSlogan }>{ userInfo ? userInfo.slogan : 'Talk is cheap. Show me the code.' }</Text>
+        <Image style={ styles.userGravatar } source={{ uri: userInfo.gravatar }}/>
+        <Text style={ styles.userName }>{ userInfo.name }</Text>
+        <Text style={ styles.userSlogan }>{ userInfo.slogan }</Text>
       <View style={ styles.userSocials }>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={ styles.userSocialItem }
           onPress={() => { this.openSocial('https://jkchao.cn') }}>
           <Ionicon name="ios-link" size={ 20 } style={ styles.userSocialIcon }/>
         </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={ styles.userSocialItem }
           onPress={() => { this.openSocial('https://github.com/jkchao') }}>
           <Ionicon name="logo-github" size={ 20 } style={ styles.userSocialIcon }/>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={ styles.userSocialItem }
+          onPress={() => { this.openSocial('https://juejin.im/user/5858c896128fe1006b86cb51') }}>
+          <Image  style={{width: 20, height: 17}} source={ require('../images/juejin.png') }/>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={ styles.userSocialItem }
+          onPress={() => { this.openSocial('https://segmentfault.com/u/sanmao_58e1f28560e06o') }}>
+          <Image  style={{width: 20, height: 20}} source={ require('../images/segmentfault.png') }/>
+        </TouchableOpacity>
         <TouchableOpacity 
           style={ styles.userSocialItem }
           onPress={() => { this.openSocial('https://weibo.com/u/5329847417') }}>
-          <FontAwesome name="weibo" size={ 20 } style={styles.userSocialIcon}/>
+          <FontAwesome name="weibo" size={ 20 } style={ styles.userSocialIcon }/>
         </TouchableOpacity>
       </View>
     </View>
