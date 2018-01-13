@@ -4,6 +4,7 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
+
 import { Platform } from 'react-native';
 
 function lineHeight(fontSize) {
@@ -11,7 +12,7 @@ function lineHeight(fontSize) {
   return parseInt(fontSize + (fontSize * multiplier), 10);
 }
 
-const base = {
+const baseStyle = {
   fontSize: 14,
   lineHeight: lineHeight(14),
   ...Platform.select({
@@ -22,8 +23,13 @@ const base = {
       fontFamily: 'Roboto',
     }
   })
-}
+};
 
 export default {
-  base: { ...base }
+  baseStyle: { ...baseStyle },
+  title: {
+    ...baseStyle,
+    fontSize: baseStyle.fontSize * 1.75,
+    lineHeight: lineHeight(baseStyle.fontSize * 2)
+  }
 }

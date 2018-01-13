@@ -13,6 +13,9 @@ import ABout from '../pages/about'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+// style
+import appStyle from '../style'
+
 const BasicApp = TabNavigator(
   {
     HomeTab: {
@@ -23,7 +26,7 @@ const BasicApp = TabNavigator(
         tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
             name={ focused ? 'ios-home' : 'ios-home-outline' }
-            size={ 26 }
+            size={ 22 }
             style={{ color: tintColor }}
           />
         )
@@ -33,11 +36,11 @@ const BasicApp = TabNavigator(
       screen: ABout,
       path: '/ABout',
       navigationOptions: {
-        tabBarLabel: 'Settings',
+        tabBarLabel: 'Me',
         tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
-            name={ focused ? 'ios-settings' : 'ios-settings-outline' }
-            size={ 26 }
+            name={ focused ? 'ios-person' : 'ios-person-outline' }
+            size={ 22 }
             style={{ color: tintColor }}
           />
         )
@@ -45,14 +48,17 @@ const BasicApp = TabNavigator(
     }
   },
   {
-    tabBarPosition: 'bottom',
-    animationEnabled: true,
-    configureTransition: (currentTransitionProps,nextTransitionProps) => ({
-      timing: Animated.spring,
-      tension: 1,
-      friction: 35,
-    }),
-    swipeEnabled: false,
+    tabBarOptions: {
+      activeTintColor: appStyle.colors.activeColor,
+      labelStyle: {
+        fontSize: 12,
+        marginTop: 10
+      },
+      style: {
+        backgroundColor: appStyle.colors.tabBackground,
+        height: 44
+      }
+    }
   }
 )
 

@@ -9,9 +9,6 @@ import {
 } from 'react-native'
 
 export default class Home extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'HOME',
-  }
   render() {
     const { goBack } = this.props.navigation;
     return (

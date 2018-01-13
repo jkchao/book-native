@@ -3,10 +3,11 @@
  * 数据请求
  */
 
- import showToast from '@app/components/Toast'
+ import showToast from '../components/common/Toast'
 
  const baseUrl = 'https://api.jkchao.cn/api'
- const service = (url, option = {}) => {
+ 
+ const api = (url, options = {}) => {
    return fetch(url, options)
           .then(res => res.json())
           .then(res => {
@@ -18,17 +19,15 @@
           })
  }
 
- export default class Api {
+ export default class Service {
 
    //  获取书本列表
    static getBookList (current_page = 1) {
-     return service(`${baseUrl}/getBookList?/current_page=${current_page}`)
+     return api(`${baseUrl}/getBookList?/current_page=${current_page}`)
    }
 
    // 获取博主信息
    static getUserInfo () {
-     return service(`${baseUrl}/Auth`)
+     return api(`${baseUrl}/Auth`)
    }
-
-
  }

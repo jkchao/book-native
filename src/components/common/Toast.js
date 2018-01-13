@@ -6,7 +6,7 @@
  
  const showToast = message => {
    Toast.show(message || '', {
-     duration: 500,
+     duration: 1000,
      position: -70,
      shadow: true,
      animation: false,

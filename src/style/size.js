@@ -29,5 +29,5 @@ export default {
   statusBarHeight: (Platform.OS === 'ios') ? 16 : 24,
 
   // Padding
-  padding: 20
+  padding: 14
 }
