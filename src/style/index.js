@@ -1,12 +1,3 @@
-/**
- * App Theme
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
+import variables from './variables'
 
-import colors from './colors'
-import fonts from './fonts'
-import size from './size'
-
-export default { colors, fonts, size }
+export default { variables }

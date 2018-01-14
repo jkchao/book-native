@@ -6,10 +6,10 @@
 
 import React, { Component } from 'react'
 
-import { Animated } from 'react-native';
+import { Animated, View, StatusBar, StyleSheet } from 'react-native';
 import { TabNavigator } from 'react-navigation'
-import Home from '../pages/home'
-import ABout from '../pages/about'
+import Book from '../pages/Book'
+import Me from '../pages/Me'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -19,28 +19,28 @@ import appStyle from '../style'
 const BasicApp = TabNavigator(
   {
     HomeTab: {
-      screen: Home,
+      screen: Book,
       path: '/',
       navigationOptions: {
-        tabBarLabel: 'Home',
+        tabBarLabel: 'Book',
         tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
-            name={ focused ? 'ios-home' : 'ios-home-outline' }
-            size={ 22 }
+            name={ focused ? 'ios-bookmarks' : 'ios-bookmarks-outline' }
+            size={ 20 }
             style={{ color: tintColor }}
           />
         )
       }
     },
-    ABoutTab: {
-      screen: ABout,
-      path: '/ABout',
+    MeTab: {
+      screen: Me,
+      path: '/Me',
       navigationOptions: {
         tabBarLabel: 'Me',
         tabBarIcon: ({ tintColor, focused }) => (
           <Ionicons
             name={ focused ? 'ios-person' : 'ios-person-outline' }
-            size={ 22 }
+            size={ 20 }
             style={{ color: tintColor }}
           />
         )
@@ -49,17 +49,36 @@ const BasicApp = TabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: appStyle.colors.activeColor,
+      activeTintColor: appStyle.variables.tabActiveColor,
       labelStyle: {
         fontSize: 12,
-        marginTop: 10
+        marginTop: appStyle.variables.xsPad
       },
       style: {
-        backgroundColor: appStyle.colors.tabBackground,
-        height: 44
+        backgroundColor: appStyle.variables.tabDefaultBg,
+        height: appStyle.variables.tabHeight
       }
     }
   }
 )
 
-export default () => <BasicApp />
+export default class Layout extends Component {
+  render () {
+    return (
+      <View style={{ flex: 1 }}>
+        <StatusBar
+          barStyle='dark-content'
+          backgroundColor='transparent'
+          style={ styles.statusBar }
+        />
+        <BasicApp />
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  statusBar: {
+    height: appStyle.variables.navbarHeight
+  }
+})

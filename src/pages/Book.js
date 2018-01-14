@@ -8,8 +8,8 @@ import {
   Button
 } from 'react-native'
 
-export default class Home extends React.Component {
-  render() {
+export default class Home extends Component {
+  render () {
     const { goBack } = this.props.navigation;
     return (
       <Button
