@@ -10,7 +10,7 @@ import {
 
 export default class Home extends Component {
   render () {
-    const { goBack } = this.props.navigation;
+    const { goBack } = this.props.navigation
     return (
       <Button
         title="Go back to home tab"

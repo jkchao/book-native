@@ -6,12 +6,12 @@
 
 import React, { Component } from 'react'
 
-import { Animated, View, StatusBar, StyleSheet } from 'react-native';
+import { Animated, View, StatusBar, StyleSheet } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 import Book from '../pages/Book'
 import Me from '../pages/Me'
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 // style
 import appStyle from '../style'
