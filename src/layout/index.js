@@ -51,7 +51,8 @@ const BasicApp = TabNavigator(
       },
       style: {
         backgroundColor: appStyle.variables.tabDefaultBg,
-        height: appStyle.variables.tabHeight
+        height: appStyle.variables.tabHeight,
+        borderWidth: 0
       }
     }
   }
@@ -60,12 +61,14 @@ const BasicApp = TabNavigator(
 export default class Layout extends Component {
   render () {
     return (
-      <View style={{ flex: 1 }}>
-        <StatusBar
-          barStyle='dark-content'
-          backgroundColor='transparent'
-          style={ styles.statusBar }
-        />
+      <View style={ styles.container }>
+        <View style={ styles.statusBar }>
+          <StatusBar
+            barStyle='dark-content'
+            backgroundColor='#FFFFFF'
+            currentHeight='50'
+          />
+        </View>
         <BasicApp />
       </View>
     )
@@ -73,7 +76,11 @@ export default class Layout extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   statusBar: {
-    height: appStyle.variables.navbarHeight
+    backgroundColor: '#FFFFFF',
+    height: appStyle.variables.barHeight
   }
 })
