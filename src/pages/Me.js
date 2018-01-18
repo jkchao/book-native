@@ -7,7 +7,6 @@ import React, { Component } from 'react'
 
 import {
   TouchableOpacity,
-  BackAndroid,
   Platform,
   Linking,
   StyleSheet,
@@ -75,15 +74,10 @@ export default class About extends Component {
             onPress={ () => { this.openSocial('https://segmentfault.com/u/sanmao_58e1f28560e06o') } }>
             <Image  style={{ width: 20, height: 20 }} source={ require('../images/segmentfault.png') }/>
           </TouchableOpacity>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={ styles.userSocialItem }
             onPress={ () => { this.openSocial('https://weibo.com/u/5329847417') } }>
             <FontAwesome name="weibo" size={ 20 } style={ styles.userSocialIcon }/>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            style={ styles.userSocialItem }
-            onPress={ () => { this.openSocial('https://weibo.com/u/5329847417') } }>
-            <FontAwesome name="weixin" size={ 18 } style={ styles.userSocialIcon }/>
           </TouchableOpacity>
         </View>
       </View>
@@ -116,7 +110,8 @@ const styles = StyleSheet.create({
     fontFamily: appStyle.variables.fontFamily,
     fontSize: appStyle.variables.fontSize,
     color: appStyle.variables.normalColor,
-    marginBottom: appStyle.variables.smPad
+    marginBottom: appStyle.variables.smPad,
+    backgroundColor: appStyle.variables.defaultBackground
   },
   userSocials: {
     flexDirection: 'row',

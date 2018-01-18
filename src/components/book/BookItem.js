@@ -1,5 +1,5 @@
 /**
- * 书本
+ * book item
  */
 
 import React, { Component } from 'react'
@@ -15,10 +15,12 @@ import appStyle from '../../style'
 
 const BookItem = ({ item, index }) => {
   return (
-    <View style={ [styles.container, {
-      marginTop: index === 0 ? appStyle.variables.mdPad : 0
-    }] }>
-      <Image style={ styles.bookThumb } source={{ uri: item.thumb }} />
+    <View style={ styles.container }>
+      <Image
+        style={ styles.bookThumb } 
+        source={{ uri: item.thumb }} 
+        resizeMode= { 'cover' }
+      />
       <Text style={ styles.bookName }>
         { item.name }
       </Text>
@@ -41,13 +43,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: appStyle.variables.mdPad,
     margin: appStyle.variables.mdPad,
+    marginTop: 0,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FFFFFF'
   },
   bookThumb: {
     width: appStyle.variables.screenWidth / 2,
-    height: appStyle.variables.screenWidth / 2
+    height: appStyle.variables.screenWidth / 2 + 60,
+    backgroundColor: appStyle.variables.defaultBackground
   },
   bookName: {
     fontSize: appStyle.variables.fontSizeBase,

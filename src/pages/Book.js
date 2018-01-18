@@ -1,6 +1,6 @@
 /**
  * 
- * 列表页
+ * book
  */
 
 import React, { PureComponent } from 'react'
@@ -19,6 +19,8 @@ import Service from '../api'
 
 // component
 import BookItem from '../components/book/BookItem'
+import BookHeader from '../components/book/BookHeader'
+import BookFooter from '../components/book/BookFooter'
 
 export default class Book extends PureComponent {
   state = {
@@ -26,7 +28,9 @@ export default class Book extends PureComponent {
     loading: false,
     totalPage: 1,
     currentPage: 1,
-    animating: true
+    animating: true,
+    // 0 加载失败 1 加载中 2 无更多数据
+    RefreshType: 1
   }
 
   // 第一次获取数据
@@ -35,11 +39,11 @@ export default class Book extends PureComponent {
     Service
           .getBookList(currentPage = 1)
           .then(res => {
-              this.setState(state => ({
-                totalPage: res.result.pagination.total_page,
-                currentPage: res.result.pagination.current_page,
-                data: state.data.concat(res.result.list)
-              }))
+            this.setState(state => ({
+              totalPage: res.result.pagination.total_page,
+              currentPage: res.result.pagination.current_page,
+              data: state.data.concat(res.result.list)
+            }))
            })
            .catch(() => {
              this.setState({
@@ -50,26 +54,13 @@ export default class Book extends PureComponent {
 
   _keyExtractor = (item, index) => item.id
 
-  // 尾部组件
-  _footComponent = () => {
-    return (
-      <View style={ styles.footer }>
-        <Text style={{ color: 'black',  backgroundColor: '#FFFFFF' }}>
-          无更多数据
-        </Text>
-      </View>
-    )
-  }
-
   // 第一次进来时，列表数据为空，显示加载组件
-  emptyComponent = () => {
+  _emptyComponent = () => {
     return (
       <View style={ styles.loading }>
-        { 
+        {
           this.state.animating
-          ?  <ActivityIndicator
-                color={ appStyle.variables.primary }
-              />
+          ? <Text>。。。。</Text>
           : <Text>无数据</Text>
         }
       </View>
@@ -78,18 +69,28 @@ export default class Book extends PureComponent {
 
   // 下拉刷新获取数据
   _onEndReached = () => {
-    if (this.state.currentPage === 1) return
+    if (this.state.totalPage === 1) return
     if (
       this.state.currentPage === this.state.totalPage
     ) return
+    this.setState({
+      RefreshType: 1
+    })
     Service
-          .getBookList(currentPage = this.state.currentPage++)
+          .getBookList(currentPage = ++this.state.currentPage)
           .then(res => {
-              console.log(res)
               this.setState(state => ({
                 currentPage: res.result.pagination.current_page,
-                data: state.data.concat(res.result.list)
+                data: state.data.concat(res.result.list),
+                RefreshType: res.result.pagination.current_page === res.result.pagination.total_page
+                             ? 2
+                             : 1
               }))
+           })
+           .catch(() => {
+             this.setState({
+                RefreshType: 2
+             })
            })
   }
 
@@ -106,12 +107,13 @@ export default class Book extends PureComponent {
   render () {
     return (
       <View style={ styles.bookListContainer }>
-        <Text style={ styles.notifications }>下面是我读过的一些书，如果碰巧有你想要的，联系我吧。</Text>
         <FlatList
           // 列表为空时
-          ListEmptyComponent={ this.emptyComponent }
+          // ListEmptyComponent={ this._emptyComponent }
           // 尾部组件
-          ListFooterComponent={ this.footComponent }
+          ListFooterComponent={ BookFooter(this.state.RefreshType) }
+          // 头部组件
+          ListHeaderComponent={ BookHeader }
           // 初始数量
           initialNumToRender={ 6 }
           // 下拉刷新获取数据
@@ -126,6 +128,8 @@ export default class Book extends PureComponent {
           refreshing={ true }
           // 使用新的列表
           legacyImplementation={ false }
+          // 距离列表底部多远时，触发事件
+          onEndReachedThreshold={ 0.05 }
         />
       </View>
     )
@@ -138,16 +142,10 @@ const styles = StyleSheet.create({
     backgroundColor: appStyle.variables.defaultBackground
   },
   footer: {
-    width: 24,
-    padding: 24,
     backgroundColor: 'yellow'
   },
   loading: {
-    marginTop: appStyle.variables.xsPad
-  },
-  notifications: {
-    margin: appStyle.variables.mdPad,
-    padding: appStyle.variables.mdPad,
-    backgroundColor: '#FFFFFF' 
+    marginTop: appStyle.variables.xsPad,
+    marginBottom: appStyle.variables.xsPad
   }
 })
