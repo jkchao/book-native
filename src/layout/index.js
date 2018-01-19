@@ -1,8 +1,6 @@
 
 import React, { Component } from 'react'
 
-import SplashScreen from 'react-native-splash-screen'
-
 import { Animated, View, StatusBar, StyleSheet } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 import Book from '../pages/Book'
