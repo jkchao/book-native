@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 
-import { Animated, View, StatusBar, StyleSheet } from 'react-native'
+import { Animated, View, StatusBar, StyleSheet, Platform } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 import Book from '../pages/Book'
 import Me from '../pages/Me'
@@ -45,24 +45,22 @@ const BasicApp = TabNavigator(
   {
     tabBarOptions: {
       activeTintColor: appStyle.variables.tabActiveColor,
+      inactiveTintColor: appStyle.variables.subColor,
       labelStyle: {
         fontSize: 12,
-        marginTop: appStyle.variables.xsPad
+        marginTop: Platform === 'ios' ? appStyle.variables.xsPad : 6
       },
       style: {
         backgroundColor: appStyle.variables.tabDefaultBg,
         height: appStyle.variables.tabHeight,
         borderWidth: 0
       }
-    }
+    },
+    tabBarPosition: 'bottom'
   }
 )
 
 export default class Layout extends Component {
-//   componentDidMount() {
-//     // do anything while splash screen keeps, use await to wait for an async task.
-//      SplashScreen.hide()
-//  }
 
   render () {
     return (
@@ -71,7 +69,7 @@ export default class Layout extends Component {
           <StatusBar
             barStyle='dark-content'
             backgroundColor='#FFFFFF'
-            currentHeight='50'
+            currentHeight={appStyle.variables.barHeight}
           />
         </View>
         <BasicApp />

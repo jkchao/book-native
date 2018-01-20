@@ -90,7 +90,8 @@ export default class About extends Component {
 // styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#ffffff'
   },
   user: {
     alignItems: 'center',

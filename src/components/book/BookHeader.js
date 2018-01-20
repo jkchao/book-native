@@ -8,7 +8,8 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from 'react-native'
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -36,7 +37,8 @@ const styles = StyleSheet.create({
   text: {
     paddingLeft: appStyle.variables.mdPad,
     fontSize: appStyle.variables.fontSizeSmall,
-    color: appStyle.variables.normalColor
+    color: appStyle.variables.normalColor,
+    fontFamily: appStyle.variables.fontFamily,
   }
 })
 

@@ -16,7 +16,7 @@ export default {
   tabHeight: isIphoneX ? 32 : 44,
 
   // Navbar
-  barHeight: (Platform.OS === 'ios') ? 24 : 30,
+  barHeight: (Platform.OS === 'ios') ? 24 : 6,
 
   // color
   normalColor: '#555555',
