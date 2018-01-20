@@ -8,3 +8,8 @@ This is a app that sells my old book.
 - [react-navigation](https://github.com/react-navigation/react-navigation) 导航
 - [react-native-root-toast](https://github.com/magicismight/react-native-root-toast) 提示
 
+## 一些图
+
+![](https://raw.githubusercontent.com/jkchao/boo-native/master/screenshot/ios.ong)
+
+![](https://raw.githubusercontent.com/jkchao/boo-native/master/screenshot/android.ong)
