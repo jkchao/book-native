@@ -10,6 +10,6 @@ This is a app that sells my old book.
 
 ## 一些图
 
-![](https://raw.githubusercontent.com/jkchao/boo-native/master/screenshot/ios.ong)
+![](https://raw.githubusercontent.com/jkchao/book-native/master/screenshot/ios.png)
 
-![](https://raw.githubusercontent.com/jkchao/boo-native/master/screenshot/android.ong)
+![](https://raw.githubusercontent.com/jkchao/book-native/master/screenshot/android.png)
